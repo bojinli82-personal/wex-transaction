@@ -79,14 +79,14 @@ public class PurchaseTransactionController {
     @PostMapping
     public ResponseEntity<CreatePurchaseTransactionResponse> createTransaction(
             @Valid @RequestBody CreatePurchaseTransactionRequest request) {
-        
+
         log.info("Received request to create transaction: {}", request.getDescription());
-        
+
         try {
             CreatePurchaseTransactionResponse response = transactionService.createTransaction(request);
-            
+
             log.info("Transaction created successfully with ID: {}", response.getId());
-            
+
             return ResponseEntity.status(HttpStatus.CREATED).body(response);
         } catch (Exception e) {
             log.error("Error creating transaction: {}", e.getMessage(), e);
@@ -133,16 +133,16 @@ public class PurchaseTransactionController {
     @GetMapping("/{transactionId}")
     public ResponseEntity<PurchaseTransactionResponse> getTransaction(
             @PathVariable String transactionId,
-            @RequestParam(required = true) String currencyCode) {
-        
+            @RequestParam(name = "currency", required = true) String currencyCode) {
+
         log.info("Received request to retrieve transaction: {} with currency: {}", transactionId, currencyCode);
-        
+
         try {
             PurchaseTransactionResponse response = transactionService.getTransactionWithConversion(
                     transactionId, currencyCode);
-            
+
             log.info("Transaction retrieved successfully: {}", transactionId);
-            
+
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             log.error("Error retrieving transaction: {}", e.getMessage(), e);
