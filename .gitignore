@@ -1,0 +1,57 @@
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+*.iml
+*.iws
+
+# Maven
+target/
+/pom.xml.tag
+/pom.xml.releaseBackup
+/pom.xml.versionsBackup
+/pom.xml.next
+/release.properties
+/dependency-reduced-pom.xml
+/.m2/
+/mvnw
+/mvnw.cmd
+
+# Build outputs
+*.class
+*.jar
+*.war
+*.ear
+
+# IDE project files
+.project
+.classpath
+.settings/
+*.classpath
+*.project
+
+# Runtime files
+*.log
+logs/
+.gradle/
+build/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Temporary files
+*.tmp
+*.bak
+.#*
+
+# Package files
+*.zip
+*.tar.gz
+
+# Application runtime
+h2.mv.db
