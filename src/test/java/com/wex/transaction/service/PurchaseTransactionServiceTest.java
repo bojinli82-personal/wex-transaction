@@ -19,6 +19,7 @@ import org.mockito.MockitoAnnotations;
 
 import com.wex.transaction.dto.CreatePurchaseTransactionRequest;
 import com.wex.transaction.dto.CreatePurchaseTransactionResponse;
+import com.wex.transaction.external.TreasuryExchangeRateClient;
 import com.wex.transaction.model.PurchaseTransaction;
 import com.wex.transaction.repository.PurchaseTransactionRepository;
 
@@ -42,10 +43,13 @@ public class PurchaseTransactionServiceTest {
     @Mock
     private PurchaseTransactionRepository transactionRepository;
 
+    @Mock
+    private TreasuryExchangeRateClient exchangeRateClient;
+
     @BeforeEach
     void setup() {
         MockitoAnnotations.openMocks(this);
-        service = new PurchaseTransactionService(transactionRepository);
+        service = new PurchaseTransactionService(transactionRepository, exchangeRateClient);
     }
 
     /**
